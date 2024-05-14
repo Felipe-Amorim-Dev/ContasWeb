@@ -1,0 +1,46 @@
+<div class="m-3">
+    <h2>Consulta de Contas</h2>
+    <p>Listagem de contas cadastradas.</p>
+    <hr/>
+
+    <div class="mb-2 text-success">
+        <strong>{{mensagem}}</strong>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-sm table-hover">
+            <thead>
+                <tr>
+                    <th>Nome da conta</th>
+                    <th>Data</th>
+                    <th>Valor</th>
+                    <th>Tipo</th>
+                    <th>Observações</th>
+                    <th>Categoria</th>
+                    <th>Operações</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of contas">
+                    <td>{{item.nome}}</td>
+                    <td>{{item.dataCriacao | date: 'dd/MM/yyyy'}}</td>
+                    <td>{{item.valor | currency: 'R$'}}</td>
+                    <td>{{item.tipo}}</td>
+                    <td>{{item.observacao}}</td>
+                    <td>{{item.categoria}}</td>
+                    <td><a [routerLink]="['/editar-conta', item.id]" class="btn btn-warning btn-sm">Editar conta</a>
+                        &nbsp;
+                        <button class="btn btn-danger btn-sm" (click)="onDelete(item.id)">Excluir</button>
+                    </td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="7">
+                        <p>Total de contas registradas: {{contas.length}}</p>
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+</div>
