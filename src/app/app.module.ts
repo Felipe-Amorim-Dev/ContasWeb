@@ -18,7 +18,7 @@ const routes: Routes = [
   {path : '', component: ConsultarContaComponent},
   {path : 'cadastrar-conta', component: CriarContaComponent},
   {path : 'consultar-conta', component: ConsultarContaComponent},
-  {path : 'editar-conta', component: EditarContaComponent}
+  {path : 'editar-conta/:id', component: EditarContaComponent}
 ];
 
 

@@ -1,1 +1,80 @@
-<p>editar-conta works!</p>
+<div class="m-3">
+    <h2>Editar conta</h2>
+    <p>Use o formulário para editar a conta</p>
+    <hr/>
+</div>
+
+<div class="mb-2 text-success">
+    <strong>{{mensagem}}</strong>
+</div>
+
+<form [formGroup]="formEdicao" (ngSubmit)="onSubmit()">
+
+    <input type="hidden" formControlName="id">
+
+    <div class="row mb-2">
+        <div class="col">
+            <label>Nome da conta</label>
+            <input type="text" class="form-control" formControlName="nome"/>
+            <div *ngIf="form.nome.touched && form.nome.invalid" class="text-danger">
+                <div *ngIf="form.nome.errors.required">
+                    <p>Informe um nome para a conta.</p>
+                </div>
+                <div *ngIf="form.nome.errors.minlength">
+                    <p>Informe no mínimo 3 caracteres.</p>
+                </div>
+            </div>                
+        </div>
+
+        <div class="col">
+            <label>Valor da conta</label>
+            <input type="text" class="form-control" formControlName="valor"/>
+            <div *ngIf="form.valor.touched && form.valor.invalid" class="text-danger">
+                <div *ngIf="form.valor.errors.required">
+                    <p>Informe um valor para a conta.</p>
+                </div>
+                <div *ngIf="form.valor.errors.min">
+                    <p>O valor da conta não pode ser 0.</p>
+                </div>
+            </div>                
+        </div>
+
+        <div class="col">
+            <label>Tipo da conta</label>            
+            <select class="form-control" formControlName="tipo">                    
+                <option *ngFor="let item of tipo" [value]="item">{{ item }}</option>
+            </select>
+            <div *ngIf="form.tipo.touched && form.tipo.invalid" class="text-danger">
+                <div *ngIf="form.tipo.errors.required">
+                    <p>Informe o tipo da conta.</p>
+                </div>                    
+            </div>                                                             
+        </div>
+
+        <div class="col">
+            <label>Observações</label>
+            <input type="text" class="form-control" formControlName="observacao"/>                             
+        </div>
+
+        <div class="col">
+            <label>Categoria da conta</label>                
+            <select class="form-control" formControlName="categoria">
+                <option *ngFor="let item of categoria" [value]="item">{{ item }}</option>
+            </select>   
+            <div *ngIf="form.categoria.touched && form.categoria.invalid" class="text-danger">
+                <div *ngIf="form.categoria.errors.required">
+                    <p>Informe a categoria da conta.</p>
+                </div>                    
+            </div>                        
+        </div>
+    </div>
+
+    <div class="row mb-2">
+        <div class="col">
+            <input type="submit" [disabled]="!formEdicao.valid" class="btn btn-success" value="Salvar alterações">
+            &nbsp;
+            <a routerLink="/consultar-conta" class="btn btn-light">Ir para consulta</a>
+        </div>
+    </div>
+
+</form>
