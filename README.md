@@ -16,7 +16,7 @@
 <p>Barra de navegação comum entre todas as páginas.</p>
 
 <h3>Componente Footer</h3>
-<p>Roda-pé da página, componemte comum a todas as páginas.</p>
+<p>Roda-pé da página, componente comum a todas as páginas.</p>
 
 <h3>Componente Cadastrar-conta</h3>
 <p>Página para cadastro das contas.</p>
